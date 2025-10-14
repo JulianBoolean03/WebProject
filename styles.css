@@ -87,6 +87,11 @@ body {
   opacity: .7;
   margin-right: .4ch;
   font-weight: 500;
+  font-size: 12px;
+}
+
+.credit .value {
+  font-size: 15px;
 }
 
 /* Viewing window that holds 3 reels */
