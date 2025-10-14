@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CSS Slot — Main</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <div class="frame">
+    <header class="topbar">
+      <h1 class="title">CSS Slot Machine</h1>
+    </header>
+
+    <main class="machine" aria-label="Slot machine">
+      <div class="credit" aria-live="polite">
+        <span class="label">Credits</span>
+        <span class="value">0050</span>
+      </div>
+
+      <section class="window" role="group" aria-label="Reels">
+        <!-- Reel 1 -->
+        <div class="reel">
+          <div class="sym"><img src="assets/cherry.png" alt="Cherry" /></div>
+          <div class="sym"><img src="assets/lemon.png" alt="Lemon" /></div>
+          <div class="sym"><img src="assets/watermelon.png" alt="Watermelon" /></div>
+        </div>
+
+        <!-- Reel 2 -->
+        <div class="reel">
+          <div class="sym"><img src="assets/grape.png" alt="Grape" /></div>
+          <div class="sym"><img src="assets/diamond.png" alt="Diamond" /></div>
+          <div class="sym"><img src="assets/orange.png" alt="Orange" /></div>
+        </div>
+
+        <!-- Reel 3 -->
+        <div class="reel">
+          <div class="sym"><img src="assets/kiwi.png" alt="Kiwi" /></div>
+          <div class="sym"><img src="assets/apple.png" alt="Apple" /></div>
+          <div class="sym"><img src="assets/star.png" alt="Star" /></div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footnote">
+      <small>:)</small>
+    </footer>
+  </div>
+</body>
+
+</html>

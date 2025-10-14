@@ -1,0 +1,146 @@
+/* ===== Base + theme (simple, dark) ===== */
+:root {
+  --bg: #0f1217;
+  --fg: #e9edf3;
+  --muted: #9aa3af;
+
+  /* Sizing tuned for “big on screen” */
+  --machine-max-w: 1200px;
+  --machine-w: min(90vw, var(--machine-max-w));
+  --window-h: clamp(260px, 42vh, 520px);
+  /* tall window */
+  --reel-gap: clamp(12px, 2vw, 24px);
+
+  /* Card surfaces */
+  --panel: #151b24;
+  --panel-border: #243043;
+  --cabinet: #121826;
+  --cabinet-border: #263249;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font: 16px/1.45 ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+  background: var(--bg);
+  color: var(--fg);
+}
+
+/* ===== Page frame ===== */
+.frame {
+  min-height: 100svh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  align-items: center;
+  justify-items: center;
+  padding: clamp(16px, 3vw, 32px);
+  gap: clamp(12px, 2.2vw, 22px);
+}
+
+.topbar {
+  width: var(--machine-w);
+}
+
+.title {
+  margin: 0;
+  font-weight: 700;
+  letter-spacing: .2px;
+  font-size: clamp(20px, 2.4vw, 28px);
+  opacity: .95;
+}
+
+/* ===== Machine (no animation, static) ===== */
+.machine {
+  width: var(--machine-w);
+  background: var(--cabinet);
+  border: 1px solid var(--cabinet-border);
+  border-radius: 20px;
+  padding: clamp(16px, 2.2vw, 28px);
+  position: relative;
+  box-shadow: 0 18px 50px rgba(0, 0, 0, .35);
+}
+
+/* Credits: small fixed box in the corner */
+.credit {
+  position: absolute;
+  top: clamp(10px, 1.4vw, 16px);
+  right: clamp(10px, 1.4vw, 16px);
+  background: var(--panel);
+  border: 1px solid var(--panel-border);
+  border-radius: 12px;
+  padding: .45rem .6rem;
+  line-height: 1;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums lining-nums;
+  width: calc(4 * 1ch + 1.1rem);
+  text-align: right;
+}
+
+.credit .label {
+  opacity: .7;
+  margin-right: .4ch;
+  font-weight: 500;
+}
+
+/* Viewing window that holds 3 reels */
+.window {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: var(--reel-gap);
+  align-items: center;
+  justify-content: center;
+
+  height: var(--window-h);
+  background: var(--panel);
+  border: 1px solid var(--panel-border);
+  border-radius: 16px;
+  padding: clamp(10px, 1.6vw, 18px);
+}
+
+/* Each reel shows three static symbols stacked */
+.reel {
+  height: 100%;
+  border: 1px solid var(--panel-border);
+  border-radius: 14px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, .06), transparent 40%, transparent 60%, rgba(0, 0, 0, .10));
+  overflow: hidden;
+
+  display: grid;
+  grid-auto-rows: 1fr;
+  align-content: stretch;
+  gap: clamp(6px, 1vw, 10px);
+  padding: clamp(8px, 1.2vw, 12px);
+}
+
+/* Symbol cells (static) */
+.sym {
+  display: grid;
+  place-items: center;
+  background: rgba(255, 255, 255, .02);
+  border-radius: 10px;
+}
+
+.sym img {
+  max-width: 90%;
+  max-height: 90%;
+  height: auto;
+  width: auto;
+  display: block;
+}
+
+/* Footer */
+.footnote {
+  width: var(--machine-w);
+  color: var(--muted);
+  font-size: .9rem;
+  text-align: right;
+}
