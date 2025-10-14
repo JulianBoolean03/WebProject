@@ -84,9 +84,18 @@ body {
 }
 
 .credit .label {
+  position: static;
   opacity: .7;
   margin-right: .4ch;
   font-weight: 500;
+  font-size: 12px;
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.credit .value {
+  position: static;
+  font-size: 15px;
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 /* Viewing window that holds 3 reels */
