@@ -1,4 +1,4 @@
-/* ===== Base + theme (simple, dark) ===== */
+/* Feel free to change the colors becuase I suck at designing */
 :root {
   --bg: #0f1217;
   --fg: #e9edf3;
@@ -8,10 +8,9 @@
   --machine-max-w: 1200px;
   --machine-w: min(90vw, var(--machine-max-w));
   --window-h: clamp(260px, 42vh, 520px);
-  /* tall window */
   --reel-gap: clamp(12px, 2vw, 24px);
 
-  /* Card surfaces */
+  /* THE Card surfaces */
   --panel: #151b24;
   --panel-border: #243043;
   --cabinet: #121826;
@@ -34,7 +33,7 @@ body {
   color: var(--fg);
 }
 
-/* ===== Page frame ===== */
+/*  Page frame */
 .frame {
   min-height: 100svh;
   display: grid;
@@ -57,7 +56,7 @@ body {
   opacity: .95;
 }
 
-/* ===== Machine (no animation, static) ===== */
+/*  Machine (no animation currently static)  */
 .machine {
   width: var(--machine-w);
   background: var(--cabinet);
@@ -105,7 +104,7 @@ body {
   padding: clamp(10px, 1.6vw, 18px);
 }
 
-/* Each reel shows three static symbols stacked */
+/* Each reel shows three symbols! */
 .reel {
   height: 100%;
   border: 1px solid var(--panel-border);
@@ -121,7 +120,7 @@ body {
   padding: clamp(8px, 1.2vw, 12px);
 }
 
-/* Symbol cells (static) */
+/* Symbol cells (I currently have them static) */
 .sym {
   display: grid;
   place-items: center;
