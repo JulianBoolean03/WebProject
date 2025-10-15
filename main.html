@@ -10,15 +10,18 @@
 
 <body>
 
+  <div class ="theme-box">
+    <!--Button for toggling UI Theme-->
+    <input type="checkbox" id="theme" hidden>
+    <label for="theme" class = "theme-btn">Theme</label>
+  </div>
+
   <!-- hidden spin state (used by CSS selectors) -->
   <input id="spin" class="sr-only" type="checkbox" />
 
   <div class="frame">
     <header class="topbar">
       <h1 class="title">CSS Slot Machine</h1>
-      <!--Button for toggling UI Theme-->
-      <input type="checkbox" id="theme" class="hidden">
-      <label for="theme" class = "theme-btn">Theme</label>
     </header>
 
     <!-- slot cabinet -->
