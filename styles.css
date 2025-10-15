@@ -126,6 +126,11 @@ body {
   color: white;
 }
 
+.theme:has(#theme:checked) .theme-btn:hover {
+  background-color: rgb(67, 77, 76);
+  color: black;
+}
+
 /*  Machine (no animation currently static)  */
 .machine {
   width: var(--machine-w);
