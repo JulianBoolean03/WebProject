@@ -58,7 +58,12 @@ body {
 
 /* Button for toggling UI theme */
 /* Am working on trying to put it next to 'CSS Slot Machine' or anywhere near the top */
-.theme {
+
+.hidden {
+  display: none;
+}
+
+.theme-btn {
   position: absolute;
   height: 30px;
   width: 55px;
@@ -66,9 +71,12 @@ body {
   justify-content: center;
   align-items: center;
   transition-duration: 0.4s;
+  border: 2px solid rgb(118, 132, 138);
+  background-color: white;
+  color: black;
 }
 
-.theme:hover {
+.theme-btn:hover {
   background-color: rgb(67, 77, 76);
   color: white;
 }
