@@ -27,6 +27,20 @@
   --spin-duration: 10s;
 }
 
+/* Light mode */
+@media (prefers-color-scheme: light) {
+  :root {
+  --fg: #0f1217;
+  --bg: #e9edf3;
+  --muted: #9aa3af;
+    /* THE Card surfaces (Light mode)*/
+  --panel: #f6f8fb;
+  --panel-border: #f3f3f3;
+  --cabinet: #ffffff;
+  --cabinet-border: #e7eaef;
+  }
+}
+
 * {
   box-sizing: border-box;
 }
