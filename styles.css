@@ -214,11 +214,25 @@ body {
 }
 
 /* For Jackpot */
-.text {
+
+.overlay {
+  text-align: center;
+}
+
+#text {
   text-align: center;
   color: #813be3;
   background: linear-gradient(#7cff6b, #e0f88c);
   font-size: 250px;
+  font-family: 'Brush Script MT', cursive;
+}
+
+#play-again-btn {
+  position: relative;
+  color: yellow;
+  background: linear-gradient(#a3eef8, #cf6ee8);
+  border: 2px solid rgb(81, 31, 135);
+  font-size: 100px;
 }
 
 /* Julians Spin Button story */
