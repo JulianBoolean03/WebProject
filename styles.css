@@ -213,6 +213,14 @@ body {
   display: block;
 }
 
+/* For Jackpot */
+.text {
+  text-align: center;
+  color: #813be3;
+  background: linear-gradient(#7cff6b, #e0f88c);
+  font-size: 250px;
+}
+
 /* Julians Spin Button story */
 
 
