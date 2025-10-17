@@ -79,8 +79,6 @@ body {
   opacity: .95;
 }
 
-/* Button for toggling UI theme. It's in an ugly position right now as I am more focused on making button work for now. */
-
 .theme-btn {
   position: absolute;
   height: 30px;
