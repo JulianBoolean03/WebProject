@@ -217,13 +217,13 @@ body {
 
 .overlay {
   text-align: center;
+  background: linear-gradient(#7cff6b, #e0f88c);
 }
 
-#text {
+#jackpot-text {
   text-align: center;
   color: #813be3;
-  background: linear-gradient(#7cff6b, #e0f88c);
-  font-size: 250px;
+  font-size: 525px;
   font-family: 'Brush Script MT', cursive;
 }
 
@@ -232,7 +232,8 @@ body {
   color: yellow;
   background: linear-gradient(#a3eef8, #cf6ee8);
   border: 2px solid rgb(81, 31, 135);
-  font-size: 100px;
+  font-size: 110px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 /* Julians Spin Button story */
