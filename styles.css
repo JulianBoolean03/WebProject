@@ -3,39 +3,51 @@
   --bg: #0f1217;
   --fg: #e9edf3;
   --muted: #9aa3af;
-    /* THE Card surfaces */
+
+  /* Card surfaces */
   --panel: #151b24;
   --panel-border: #243043;
   --cabinet: #121826;
   --cabinet-border: #263249;
 
-  /* Sizing tuned for “big on screen” */
+  /* Sizing */
   --machine-max-w: 1200px;
   --machine-w: min(90vw, var(--machine-max-w));
-  --window-h: clamp(260px, 42vh, 520px);
-  --reel-gap: clamp(12px, 2vw, 24px);
 
+  /* Slot cell sizing */
   --row-h: 200px;
   --row-gap: clamp(6px, 1vw, 10px);
+  --cell: calc(var(--row-h) + var(--row-gap));
+
+  /* Exactly 3 rows visible in the window */
   --cycle: calc(3 * var(--row-h) + 2 * var(--row-gap));
-  --turns: 24;
+  --window-h: var(--cycle);
+  /* force 3 visible rows */
+
+  --reel-gap: clamp(12px, 2vw, 24px);
+
+  /* One “set” = 9 symbols (your markup has 2 sets per reel) */
   --per-set: 9;
-  --cycles: 5;
-  --rows: calc(var(--per-set) * var(--cycles));
   --set-h: calc(var(--per-set) * var(--row-h) + (var(--per-set) - 1) * var(--row-gap));
+
+  /* Spin timing */
   --spin-duration: 10s;
+  /* spin for exactly 10s, then we freeze */
+  --full-turns: 1;
+  /* you have 2 sets in HTML, so 1 safe full turn */
+  --land-slot: 2;
+  /* land in the MIDDLE row (1=top, 2=middle, 3=bottom) */
 }
 
 @media (prefers-color-scheme: light) {
   :root {
-  --fg: #0f1217;
-  --bg: #e9edf3;
-  --muted: #9aa3af;
-    /* THE Card surfaces (Light mode)*/
-  --panel: #f4f6f9;
-  --panel-border: #eaeaeb;
-  --cabinet: #fcf6f6;
-  --cabinet-border: #dce0ea;
+    --fg: #0f1217;
+    --bg: #e9edf3;
+    --muted: #9aa3af;
+    --panel: #f4f6f9;
+    --panel-border: #eaeaeb;
+    --cabinet: #fcf6f6;
+    --cabinet-border: #dce0ea;
   }
 }
 
@@ -53,10 +65,10 @@ body {
   font: 16px/1.45 ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
   background: var(--bg);
   color: var(--fg);
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition: background-color .3s ease, color .3s ease;
 }
 
-/*  Page frame */
+/* Page frame */
 .frame {
   min-height: 100svh;
   display: grid;
@@ -86,43 +98,41 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  transition-duration: 0.4s;
+  transition-duration: .4s;
   border: 2px solid rgb(118, 132, 138);
-  background-color: white;
-  color: black;
+  background: #fff;
+  color: #000;
 }
 
 .theme-btn:hover {
-  background-color: rgb(67, 77, 76);
-  color: white;
+  background: rgb(67, 77, 76);
+  color: #fff;
 }
 
-.theme:not(:has(#theme:checked)) ~ .frame {
-  background-color: var(--bg);
+.theme:not(:has(#theme:checked))~.frame {
+  background: var(--bg);
   color: var(--fg);
   --panel: #151b24;
   --panel-border: #243043;
   --cabinet: #121826;
   --cabinet-border: #263249;
-  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.theme:has(#theme:checked) ~ .frame {
-  background-color: var(--fg);
+.theme:has(#theme:checked)~.frame {
+  background: var(--fg);
   color: var(--bg);
   --panel: #f4f6f9;
   --panel-border: #eaeaeb;
   --cabinet: #fcf6f6;
   --cabinet-border: #dce0ea;
-  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .theme:has(#theme:checked) .theme-btn {
-  background-color: black;
-  color: white;
+  background: #000;
+  color: #fff;
 }
 
-/*  Machine (no animation currently static)  */
+/* Machine */
 .machine {
   width: var(--machine-w);
   background: var(--cabinet);
@@ -133,7 +143,7 @@ body {
   box-shadow: 0 18px 50px rgba(0, 0, 0, .35);
 }
 
-/* Credits: small fixed box in the corner */
+/* Credits badge */
 .credit {
   position: absolute;
   top: clamp(10px, 1.4vw, 16px);
@@ -145,49 +155,42 @@ body {
   line-height: 1;
   font-weight: 600;
   font-variant-numeric: tabular-nums lining-nums;
-  width: calc(4 * 1ch + 1.1rem);
+  width: calc(4*1ch + 1.1rem);
   text-align: right;
 }
 
 .credit .label {
-  position: static;
   opacity: .7;
   margin-right: .4ch;
   font-weight: 500;
   font-size: 12px;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 .credit .value {
-  position: static;
   font-size: 15px;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
-/* Viewing window that holds 3 reels */
+/* Window & Reels */
 .window {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: var(--reel-gap);
   align-items: center;
   justify-content: center;
-
   height: var(--window-h);
+  /* exactly 3 rows visible */
   background: var(--panel);
   border: 1px solid var(--panel-border);
   border-radius: 16px;
   padding: clamp(10px, 1.6vw, 18px);
 }
 
-/* Each reel shows three symbols! */
 .reel {
   height: 100%;
   border: 1px solid var(--panel-border);
   border-radius: 14px;
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, .06), transparent 40%, transparent 60%, rgba(0, 0, 0, .10));
+  background: linear-gradient(180deg, rgba(255, 255, 255, .06), transparent 40%, transparent 60%, rgba(0, 0, 0, .10));
   overflow: hidden;
-
   display: grid;
   grid-auto-rows: 1fr;
   align-content: stretch;
@@ -195,7 +198,6 @@ body {
   padding: clamp(8px, 1.2vw, 12px);
 }
 
-/* Symbol cells (I currently have them static) */
 .sym {
   display: grid;
   place-items: center;
@@ -211,32 +213,6 @@ body {
   display: block;
 }
 
-/* For Jackpot */
-
-.overlay {
-  text-align: center;
-  background: linear-gradient(#7cff6b, #e0f88c);
-}
-
-#jackpot-text {
-  text-align: center;
-  color: #813be3;
-  font-size: 525px;
-  font-family: 'Brush Script MT', cursive;
-}
-
-#play-again-btn {
-  position: relative;
-  color: yellow;
-  background: linear-gradient(#a3eef8, #cf6ee8);
-  border: 2px solid rgb(81, 31, 135);
-  font-size: 110px;
-  font-family: Georgia, 'Times New Roman', Times, serif;
-}
-
-/* Julians Spin Button story */
-
-
 /* Footer */
 .footnote {
   width: var(--machine-w);
@@ -245,11 +221,7 @@ body {
   text-align: right;
 }
 
-
-
-
-/* -- Spin button story (no animation yet) -- */
-
+/* A11y helper */
 .sr-only {
   position: absolute !important;
   width: 1px;
@@ -262,7 +234,7 @@ body {
   border: 0;
 }
 
-/* 2) base button look (label renders like a button) */
+/* Button */
 .btn {
   display: inline-block;
   padding: .55rem .9rem;
@@ -274,79 +246,29 @@ body {
   color: inherit;
 }
 
-/* smooth long spin that lasts 10s */
-.strip {
-  display: grid;
-  grid-auto-rows: var(--row-h);
-  row-gap: var(--row-gap);
-  will-change: transform;
-  transform: translate3d(0, 0, 0);
-  backface-visibility: hidden;
-
-  /* loop one set height, forever; checkbox will pause/resume */
-  animation: reel-loop var(--spin-duration) linear infinite;
-  animation-play-state: paused;
-}
-
-.r1 .strip {
-  animation-delay: 0s;
-}
-
-.r2 .strip {
-  animation-delay: .12s;
-}
-
-.r3 .strip {
-  animation-delay: .24s;
-}
-
-/* when the hidden checkbox #spin is checked, treat as "spinning" */
-#spin:checked~.frame .strip {
-  animation-play-state: running;
-}
-
-#spin:checked~.frame .spin-btn {
-  pointer-events: none;
-  opacity: .6;
-}
-
-#spin:checked~.frame .spin-btn::after {
-  content: " (spinning…)";
-  opacity: .85;
-}
-
 .controls {
   width: var(--machine-w);
   margin: clamp(12px, 2.2vw, 22px) auto 0;
   display: flex;
   justify-content: center;
-  /* change to flex-start for left-aligned */
 }
 
 .spin-btn {
   --ring: rgba(124, 255, 107, .85);
-
   font-weight: 800;
   letter-spacing: .3px;
   padding: .8rem 1.4rem;
   border-radius: 999px;
   border: 1px solid color-mix(in srgb, var(--panel-border), white 10%);
   color: #fff;
-
-  /* animated gradient */
   background: linear-gradient(135deg, #ff7a18, #af002d 35%, #319197 70%, #7cff6b);
   background-size: 300% 300%;
   animation: spinBtnGradient 6s ease infinite;
-
-  /* depth & glow */
   position: relative;
-  box-shadow:
-    0 6px 18px rgba(0, 0, 0, .35),
-    0 0 0 2px rgba(255, 255, 255, .06) inset;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, .35), 0 0 0 2px rgba(255, 255, 255, .06) inset;
   transition: transform .12s ease, filter .2s ease, box-shadow .2s ease;
 }
 
-/* soft neon aura */
 .spin-btn::before {
   content: "";
   position: absolute;
@@ -358,7 +280,6 @@ body {
   z-index: -1;
 }
 
-/* hover/active/focus polish */
 .spin-btn:hover {
   transform: translateY(-2px) scale(1.02);
   filter: saturate(1.15);
@@ -373,34 +294,109 @@ body {
   outline-offset: 3px;
 }
 
-/* animated gradient loop */
 @keyframes spinBtnGradient {
   0% {
-    background-position: 0% 50%;
+    background-position: 0% 50%
   }
 
   50% {
-    background-position: 100% 50%;
+    background-position: 100% 50%
   }
 
   100% {
-    background-position: 0% 50%;
+    background-position: 0% 50%
   }
 }
 
+/* SPIN LOGIC :D */
+/* Strips don't animate until we "spin" */
+.strip {
+  display: grid;
+  grid-auto-rows: var(--row-h);
+  row-gap: var(--row-gap);
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+}
 
-@keyframes reel-loop {
+/* No stagger → all stop exactly at 10s */
+.r1 .strip,
+.r2 .strip,
+.r3 .strip {
+  animation-delay: 0s;
+}
+
+/* Where DIAMOND appears in your markup (1-based) */
+.r1 {
+  --target-index: 8;
+}
+
+.r2 {
+  --target-index: 2;
+}
+
+.r3 {
+  --target-index: 5;
+}
+
+/* Start the one-shot spin when #spin is checked */
+#spin:checked~.frame .strip {
+  animation: reel-to-diamond var(--spin-duration) linear forwards;
+}
+
+/* Dim/lock button during spin */
+#spin:checked~.frame .spin-btn {
+  pointer-events: none;
+  opacity: .6;
+}
+
+#spin:checked~.frame .spin-btn::after {
+  content: " (spinning…)";
+  opacity: .85;
+}
+
+/* Move: 1 full set + offset so diamond lands in the CENTER (land-slot = 2) */
+@keyframes reel-to-diamond {
   from {
     transform: translate3d(0, 0, 0);
   }
 
   to {
-    transform: translate3d(0, calc(-1 * var(--set-h)), 0);
+    transform: translate3d(0,
+        calc(-1 * var(--full-turns) * var(--set-h) - ((var(--target-index) - var(--land-slot)) * var(--cell))),
+        0);
   }
 }
 
+/* Jackpot page */
+.overlay {
+  min-height: 100svh;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  background: linear-gradient(#7cff6b, #e0f88c);
+}
 
-/* respect reduced motion */
+#jackpot-text {
+  color: #813be3;
+  font-family: 'Brush Script MT', cursive;
+  margin: 0 0 1rem;
+  font-size: clamp(48px, 12vw, 140px);
+}
+
+#play-again-btn {
+  display: inline-block;
+  color: #fff;
+  background: linear-gradient(135deg, #a3eef8, #cf6ee8);
+  border: 2px solid rgb(81, 31, 135);
+  padding: .8rem 1.6rem;
+  border-radius: 999px;
+  text-decoration: none;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: clamp(16px, 3vw, 28px);
+}
+
+/* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   .spin-btn {
     animation: none;
