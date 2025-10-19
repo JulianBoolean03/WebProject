@@ -411,6 +411,25 @@ body {
   .spin-btn {
     animation: none;
   }
+
+  .strip {
+    animation: none !important;
+    transition: transform 0s ease !important;
+  }
+
+  #spin:checked~.frame .spin-btn {
+    pointer-events: auto;
+    opacity: 1;
+  }
+
+  #spin:checked~.frame .spin-btn::after {
+    content: " (spinning…)";
+    opacity: 0.85;
+  }
+
+  #spin:checked~.frame .strip {
+    transform: translate3d(0, 0, 0);
+  }
 }
 
 /* Win Glow Pulse */
