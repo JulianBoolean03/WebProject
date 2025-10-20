@@ -365,6 +365,58 @@ body {
   opacity: .85;
 }
 
+/* Skip Animation Button */
+.skip-btn {
+  --ring: rgba(255, 110, 110, .85);
+  font-weight: 800;
+  letter-spacing: .3px;
+  padding: .8rem 1.4rem;
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--panel-border), white 10%);
+  color: #fff;
+  background: linear-gradient(135deg, #baed6e, #a741b4 35%, #383192 70%, #e29a4d);
+  background-size: 300% 300%;
+  animation: spinBtnGradient 6s ease infinite;
+  position: relative;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, .35), 0 0 0 2px rgba(255, 255, 255, .06) inset;
+  transition: transform .12s ease, filter .2s ease, box-shadow .2s ease;
+  margin-left: 10px;
+}
+
+.skip-btn::before {
+  content: "";
+  position: absolute;
+  inset: -6px;
+  border-radius: inherit;
+  background: radial-gradient(60% 60% at 50% 50%, var(--ring), transparent 60%);
+  filter: blur(10px);
+  opacity: .45;
+  z-index: -1;
+}
+
+.skip-btn:hover {
+  transform: translateY(-2px) scale(1.02);
+  filter: saturate(1.15);
+}
+
+.skip-btn:active {
+  transform: translateY(0) scale(1.0);
+}
+
+.skip-btn:focus-visible {
+  outline: 3px solid var(--ring);
+  outline-offset: 3px;
+}
+
+#skip-spin:checked ~ .frame .strip {
+  animation: reel-to-diamond 0s linear forwards;
+}
+
+#skip-spin:checked ~ .frame .window {
+  animation: glowPulse 1.2s ease-in-out 1s infinite alternate;
+  border-color: #7cff6b;
+}
+
 /* Move: 1 full set + offset so diamond lands in the CENTER (land-slot = 2) */
 @keyframes reel-to-diamond {
   from {
