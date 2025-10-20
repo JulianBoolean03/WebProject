@@ -374,7 +374,7 @@ body {
   border-radius: 999px;
   border: 1px solid color-mix(in srgb, var(--panel-border), white 10%);
   color: #fff;
-  background: linear-gradient(135deg, #ff7a18, #af002d 35%, #319197 70%, #7cff6b);
+  background: linear-gradient(135deg, #baed6e, #a741b4 35%, #383192 70%, #e29a4d);
   background-size: 300% 300%;
   animation: spinBtnGradient 6s ease infinite;
   position: relative;
