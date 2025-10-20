@@ -20,6 +20,9 @@
   <!-- hidden spin state (used by CSS selectors) -->
   <input id="spin" class="sr-only" type="checkbox" />
 
+  <!-- Hidden spin state for skipping spin animation-->
+   <input id="skip-spin" class="sr-only" type="checkbox" />
+
   <div class="frame">
     <header class="topbar">
       <h1 class="title">CSS Slot Machine</h1>
@@ -113,6 +116,8 @@
     <!-- Spin button -->
     <div class="controls">
       <label for="spin" class="btn spin-btn">Spin</label>
+      <!-- Skip Animation button -->
+       <label for="skip-spin" class="btn skip-btn">Skip Spin</label>
     </div>
 
     <footer class="footnote">
