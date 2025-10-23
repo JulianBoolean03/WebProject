@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Project Intro — Group 11</title>
+  <style>
+    :root {
+      --bg: #0f1217;
+      --fg: #e9edf3;
+      --card: #151b24;
+      --border: #243043;
+      --accent: #7dd3fc;
+    }
+
+    @media (prefers-color-scheme: light) {
+      :root {
+        --bg: #f8fafc;
+        --fg: #0b1220;
+        --card: #ffffff;
+        --border: #e5e7eb;
+        --accent: #2563eb;
+      }
+    }
+
+    body {
+      margin: 0;
+      font: 16px/1.6 system-ui, Segoe UI, Roboto, Helvetica, Arial;
+      background: var(--bg);
+      color: var(--fg);
+      display: grid;
+      place-items: center;
+      min-height: 100dvh;
+      padding: 24px;
+    }
+
+    .card {
+      max-width: 820px;
+      width: 100%;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px 28px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, .25);
+    }
+
+    h1 {
+      margin: 0 0 8px;
+      font-size: 1.6rem
+    }
+
+    .meta {
+      display: grid;
+      gap: 6px;
+      margin: 6px 0 18px;
+      font-size: .95rem
+    }
+
+    .pill {
+      display: inline-block;
+      padding: .25rem .6rem;
+      border: 1px solid var(--border);
+      border-radius: 999px
+    }
+
+    ul {
+      margin: .4rem 0 0 1.2rem
+    }
+
+    .grid {
+      display: grid;
+      gap: 14px
+    }
+
+    a {
+      color: var(--accent)
+    }
+
+    .box {
+      padding: 14px;
+      border: 1px dashed var(--border);
+      border-radius: 12px;
+      background: color-mix(in oklab, var(--card) 92%, var(--accent))
+    }
+  </style>
+</head>
+
+<body>
+  <main class="card">
+    <h1>Slots/Reel Showcase(CSS-Only)</h1>c
+    <div class="meta">
+      <div><span class="pill">Team: Group 11 “Gambling Addicts”</span></div>
+      <div><strong>Leader:</strong> Julian Robinson</div>
+      <div><strong> A responsive slot-machine UI built with pure CSS transforms, transitions, and
+          keyframes—no JavaScript. </strong></div>
+    </div>
+
+    <section class="grid">
+      <div class="box">
+        <strong>Team & Responsibilities</strong>
+        <ul>
+          <li>Julian Robinson — Lead / Reel animation & layoutout/ Spin button / Kaban work flow </li>
+          <li>Amanda Nguyen — Theme & accessibiliy / Jackpot page & routing / Win glow effect</li>
+        </ul>
+      </div>
+
+      <div class="box">
+        <strong>Links</strong>
+        <ul>
+          <li>Live Demo: <a href="main.html">main.html</a></li>
+          <li>YouTube: <a href="https://youtu.be/lmE_AdTkRbo?si=rTcY8OSAm_s6Ijhs">Presentation</a></li>
+          <li>GitHub: <a href="https://github.com/JulianBoolean03/WebProject">Repo</a></li>
+        </ul>
+      </div>
+
+      <div class="box">
+        <strong>Stretch Goals Implemented</strong>
+        <ul>
+          <li>3D reel illusion (perspective + rotateX)</li>
+
+          <li>confetti </li>
+
+        </ul>
+      </div>
+    </section>
+  </main>
+</body>
+
+</html>
